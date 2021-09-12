@@ -1,9 +1,5 @@
-# Fabric Example Mod
+# Linux mod
 
-## Setup
+This mod adds Linux aesthetics to Minecraft
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
-
-## License
-
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+Soft of like hot stuffs from r/Unixporn
