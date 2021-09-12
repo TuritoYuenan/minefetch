@@ -1,0 +1,9 @@
+{
+    "language.name": "English",
+    "language.region": "United States",
+    "language.code": "en_us",
+    "item.linux.arch": "Arch Essence",
+    "item.linux.void": "Void Linux Essence",
+    "item.linux.ubuntu": "Ubuntu Essence",
+    "item.linux.gentoo": "Gentoo Essence"
+}
