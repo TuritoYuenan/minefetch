@@ -1,0 +1,7 @@
+{
+    "variant": {
+        "": {
+            "model": "linux:block/tux_block"
+        }
+    }
+}
