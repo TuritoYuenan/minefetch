@@ -4,14 +4,14 @@
   "version": "${version}",
 
   "name": "Linux Mod",
-  "description": "Minecraft Mod that adds Linux vibes to Minecraft",
+  "description": "Bring Linux aesthetics to Minecraft",
   "authors": ["TuritoYuenan"],
   "contact": {
     "homepage": "https://turitoyuenan.github.io/",
     "sources": "https://github.com/TuritoYuenan/LinuxMod"
   },
 
-  "license": "CC0-1.0",
+  "license": "Minecraft Mod Public Licence",
   "icon": "assets/linux/icon.png",
 
   "environment": "*",
