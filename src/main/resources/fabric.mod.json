@@ -1,29 +1,27 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "linux",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
-  "authors": [
-    "Me!"
-  ],
+  "name": "Minefetch",
+  "description": "Neofetch-inspired command for Minecraft",
+  "authors": ["TuritoYuenan"],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://turitoyuenan.github.io/",
+    "sources": "https://github.com/TuritoYuenan/Minefetch"
   },
 
-  "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "license": "Minecraft Mod Public Licence",
+  "icon": "assets/linux/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "vn.turito.minefetch.Minefetch"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "minefetch.mixins.json"
   ],
 
   "depends": {
