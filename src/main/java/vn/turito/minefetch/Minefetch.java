@@ -1,39 +1,41 @@
 package vn.turito.minefetch;
 
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import net.minecraft.server.command.*;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.*;
+import com.mojang.brigadier.Command;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.LiteralText;
 
-public class Minefetch implements ModInitializer {
-	private int Fetch(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
-		ServerCommandSource sauce = ctx.getSource();
-		ServerPlayerEntity player = sauce.getPlayer();
-		ServerWorld world         = sauce.getWorld();
+import static net.minecraft.server.command.CommandManager.literal;
 
+class Minefetch implements ModInitializer {
+	Command<ServerCommandSource> fetchCommand = context -> {
+		ServerCommandSource source = context.getSource();
+
+		ServerPlayerEntity player = source.getPlayer();
 		String positions = player.getBlockX()+", "+player.getBlockY()+", "+player.getBlockZ();
 
-		Text[] fetches = {
-			new LiteralText(String.valueOf("██████████  "+"@")+player.getDisplayName()),
-			new LiteralText(String.valueOf("██░░██░░██  "+"Seed: "+world.getSeed())),
-			new LiteralText(String.valueOf("████░░████  "+"Time: "+world.getTime())),
-			new LiteralText(String.valueOf("███░░░░███  "+"Position: "+positions)),
-			new LiteralText(String.valueOf("███░██░███  ")),
-			new LiteralText(String.valueOf("██████████  ")),
+		String[] lines = {
+			"██████████  " + player.getDisplayName() + "@" + source.getServer(),
+			"██░░██░░██  " + "Seed: " + source.getWorld().getSeed(),
+			"████░░████  " + "Time: " + source.getWorld().getTime(),
+			"███░░░░███  " + "Position: " + positions,
+			"███░██░███  ",
+			"██████████  ",
 		};
 
-		for (Text i: fetches) {sauce.sendFeedback(i, false);}
-		return 1;
-	}
+		for (String i: lines) {
+			source.sendFeedback(new LiteralText(i), false);
+		}
+
+		return 0;
+	};
 
 	@Override
 	public void onInitialize() {
 		CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) ->
-			dispatcher.register(CommandManager.literal("minefetch").executes(ctx -> this.Fetch(ctx)))
+			dispatcher.register(literal("minefetch").executes(this.fetchCommand))
 		);
 	}
 }
