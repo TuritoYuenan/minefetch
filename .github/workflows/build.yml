@@ -4,16 +4,15 @@
 # against bad commits.
 
 name: build
-on: [pull_request, push]
+on:
+  workflow_dispatch: # Allow manual triggering of the workflow
 
 jobs:
   build:
     strategy:
       matrix:
         # Use these Java versions
-        java: [
-          21,    # Current Java LTS
-        ]
+        java: [21]
     runs-on: ubuntu-22.04
     steps:
       - name: checkout repository
